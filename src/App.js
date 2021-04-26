@@ -15,6 +15,7 @@ class App extends Component {
     searchWords: "",
     images: [],
     showModal: false,
+    modalImage: "",
   };
 
   toggleModal = () => {
@@ -24,6 +25,13 @@ class App extends Component {
   pushImagesToState = (response) => {
     const imagesFromResponse = response.data.hits;
     this.setState({ ...this.state, images: [...imagesFromResponse] });
+  };
+  setModalImage = (linkImg) => {
+    return this.setState(({ modalImage }) => ({ modalImage: linkImg }));
+  };
+  openLargeImage = (linkImg) => {
+    this.setModalImage(linkImg);
+    this.toggleModal();
   };
   getImages() {
     axios
@@ -45,12 +53,15 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.showModal && (
-          <Modal>
-            <h1>Hi!</h1>
+          <Modal closeFn={this.toggleModal}>
+            <img src={this.state.modalImage} alt="modal" />
           </Modal>
         )}
         <Searchbar onSubmit={this.searchFormSubmit} />
-        <ImageGallery imagesArray={this.state.images}></ImageGallery>
+        <ImageGallery
+          imagesArray={this.state.images}
+          modalFn={this.openLargeImage}
+        ></ImageGallery>
         <Button />
       </div>
     );

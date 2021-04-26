@@ -8,7 +8,9 @@ class ImageGalleryItem extends Component {
     return (
       <li className="ImageGalleryItem">
         <img
-          onClick={(event) => console.log(event)}
+          onClick={(e) =>
+            this.props.modalFn(e.target.attributes[1].textContent)
+          }
           src={this.props.imageLink}
           alt={this.props.imageAlt}
           data-large={this.props.largeImageURL}

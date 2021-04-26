@@ -17,6 +17,7 @@ class ImageGallery extends Component {
               imageLink={image.previewURL}
               imagAlt={image.tags}
               largeImageURL={image.largeImageURL}
+              modalFn={this.props.modalFn}
             />
           );
         })}
