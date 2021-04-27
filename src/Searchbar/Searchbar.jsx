@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 
 class Searchbar extends Component {
-  static defaultProps = {};
-  static propTypes = {};
+  static propTypes = { onSubmit: propTypes.func };
   render() {
     return (
       <header className="Searchbar">

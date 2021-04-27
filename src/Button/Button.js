@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import { v4 as uuidv4 } from "uuid";
+import propTypes from "prop-types";
 
 class Button extends Component {
-  static defaultProps = {};
-  static propTypes = {};
+  static propTypes = { fn: propTypes.func };
 
   render() {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
     return (
-      <button
-        className="Button"
-        key={uuidv4()}
-        type="button"
-        onClick={(event) => console.log(event)}
-      >
+      <button className="Button" type="button" onClick={(e) => this.props.fn()}>
         Load more
       </button>
     );
