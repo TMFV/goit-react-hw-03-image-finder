@@ -71,7 +71,7 @@ class App extends Component {
     this.setState({ searchWords: searchWordsValue });
     const page = 1;
     this.getImages(searchWordsValue, page);
-    //event.target.reset();
+    event.target.reset();
   };
 
   loadMoreFn = () => {
